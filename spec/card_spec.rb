@@ -1,21 +1,28 @@
 class Card
-attr_reader :type
+  attr_accessor  :rank, :suit
 
-  def initialize(type)
-    @type = type
+  def initialize(rank, suit)
+    @rank = rank
+    @suit = suit
   end
 end
-#Initializing a Card class is what fixed the first error
-#Initializze(type) fixed the second error
-# attr_reader fixes the third error
+
 RSpec.describe Card do 
+  # before do 
+  #   @card = Card.new('Ace', 'Spades')
+  # end
+  def card
+    Card.new('Ace', 'Spades')
+  end
   it 'has a rank' do
-    card = Card.new('Ace', 'Spades')
     expect(card.rank).to eq('Ace')
+    card.rank = 'Queen'
+    expect(card.rank).to eq('Queen')
+
   end
 
   it 'has a suit' do
-    card = Card.new('Ace', 'Spades')
     expect(card.suit).to eq('Spades')
+  end
 end
-#first the error in the terminal then move on to the next one
+
